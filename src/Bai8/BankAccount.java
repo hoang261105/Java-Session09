@@ -28,15 +28,11 @@ public class BankAccount {
     }
 
     public void transfer(BankAccount recipient, double amount) {
-        if (balance >= amount) {
-            this.balance -= amount;
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
             recipient.deposit(amount);
             System.out.printf("Chuyển khoản thành công: %.2f\n", amount);
-        } else if (recipient.balance >= amount) {
-            this.balance += amount;
-            recipient.withdraw(amount);
-            System.out.printf("Chuyển khoản thành công: %.2f\n", amount);
-        }else {
+        } else {
             System.out.println("Chuyển tiền không hợp lệ");
         }
     }
